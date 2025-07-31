@@ -2,41 +2,54 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Travel Agency Design System - Sky Tours & Travels */
 
 @layer base {
   :root {
+    /* Base colors */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 213 27% 14%;
 
+    /* Travel brand colors */
+    --primary: 207 89% 42%;        /* Sky blue */
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 207 89% 65%;   /* Lighter sky blue */
+    
+    --secondary: 142 69% 45%;       /* Forest green */
+    --secondary-foreground: 0 0% 100%;
+    --secondary-light: 142 50% 65%;
+    
+    --accent: 25 95% 53%;           /* Sunset orange */
+    --accent-foreground: 0 0% 100%;
+    --accent-light: 25 95% 70%;
+
+    /* UI colors */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
+    --card-foreground: 213 27% 14%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 213 27% 14%;
+    
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 207 89% 42%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+    
+    /* Travel gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 50%, hsl(var(--accent)) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(210 40% 98%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--accent-light)) 100%);
+    
+    /* Shadows */
+    --shadow-travel: 0 10px 30px -5px hsl(var(--primary) / 0.3);
+    --shadow-card: 0 4px 20px -2px hsl(0 0% 0% / 0.1);
+    --shadow-hover: 0 20px 40px -5px hsl(var(--primary) / 0.4);
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +114,31 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* Travel-specific utility classes */
+  .travel-card {
+    @apply bg-card rounded-xl shadow-[var(--shadow-card)] border border-border/50 overflow-hidden transition-all duration-300;
+  }
+  
+  .travel-card:hover {
+    @apply shadow-[var(--shadow-hover)] -translate-y-2;
+  }
+  
+  .hero-text {
+    @apply text-white drop-shadow-lg;
+  }
+  
+  .gradient-text {
+    background: var(--gradient-hero);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .travel-section {
+    @apply py-16 px-4;
   }
 }
